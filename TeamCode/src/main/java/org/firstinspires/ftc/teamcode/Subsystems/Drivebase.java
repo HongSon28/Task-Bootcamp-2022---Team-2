@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -7,7 +8,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Drivebase {
     private DcMotor left, right;
-    public Drivebase(HardwareMap hardwareMap) {
+    private HardwareMap hardwareMap;
+    public Drivebase(OpMode opMode) {
+        hardwareMap = opMode.hardwareMap;
+    }
+    public void init() {
         left = hardwareMap.get(DcMotor.class,"leftDrive");
         right = hardwareMap.get(DcMotor.class, "rightDrive");
 

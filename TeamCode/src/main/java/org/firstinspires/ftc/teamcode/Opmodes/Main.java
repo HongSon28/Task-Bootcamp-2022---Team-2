@@ -1,32 +1,26 @@
 package org.firstinspires.ftc.teamcode.Opmodes;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Climber;
-import org.firstinspires.ftc.teamcode.Subsystems.Drivebase;
+import org.firstinspires.ftc.teamcode.Robot.Robot;
 
 @TeleOp(name = "Main")
-public class Main extends LinearOpMode {
-    private Drivebase drive;
-    private Climber climber;
-    private final double SLIDE_SPEED = 0.7;
+public class Main extends OpMode {
+    private Robot robot;
     @Override
-    public void runOpMode() {
-        drive = new Drivebase(hardwareMap);
-        climber = new Climber(hardwareMap);
+    public void init() {
+        robot = new Robot(this);
+        robot.init();
+    }
 
-        waitForStart();
-        while (opModeIsActive()) {
-            drive.setDrivePower(-gamepad1.left_stick_y,-gamepad1.right_stick_y);
+    @Override
+    public void start() {
 
-            if(gamepad1.circle) {
-                climber.setClimber(SLIDE_SPEED);
-            } else if(gamepad1.square) {
-                climber.setClimber(-SLIDE_SPEED);
-            } else {
-                climber.setClimber(0);
-            }
-        }
+    }
+
+    @Override
+    public void loop() {
+        robot.loop();
     }
 }
